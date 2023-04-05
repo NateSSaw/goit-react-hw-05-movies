@@ -12,6 +12,7 @@ export default function Cast() {
 
   if (reviews.length === 0)
     return <p>We don't have any reviews for this movie.</p>;
+
   return (
     <ul className={css.list__reviews}>
       {reviews.map(({ author, content, id }) => {

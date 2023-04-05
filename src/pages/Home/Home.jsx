@@ -9,16 +9,16 @@ export default function Home() {
   useEffect(() => {
     getPopularMovie().then(({ results }) => setFilms(results));
   }, []);
-  console.log(films[0]);
+
   return (
     <ul className={css.movies_list}>
-      {films?.map(({ id, title }) => {
-        return (
-          <li key={id} className={css.movie}>
-            <Link to={`/movies/${id}`}>{title}</Link>
-          </li>
-        );
-      })}
+      {films.length > 0
+        ? films.map(({ id, title }) => (
+            <li key={id} className={css.movie}>
+              <Link to={`/movies/${id}`}>{title}</Link>
+            </li>
+          ))
+        : null}
     </ul>
   );
 }

@@ -12,14 +12,15 @@ export default function MovieDetails() {
   useEffect(() => {
     getMovieById(movieId).then(setFilm);
   }, [movieId]);
+
   const {
     poster_path: posterPath,
     title,
-    release_date: releaseDate,
     overview,
     vote_average: voteAverage,
     genres,
   } = film;
+
   return (
     <div>
       <div className={css.container}>
@@ -53,7 +54,8 @@ export default function MovieDetails() {
           </li>
         </ul>
       </div>
-      <Suspense fallback={<div>Loading...</div>}>
+
+      <Suspense>
         <Outlet />
       </Suspense>
     </div>

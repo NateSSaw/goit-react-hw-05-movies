@@ -11,7 +11,6 @@ export default function Cast() {
   useEffect(() => {
     getMovieCast(movieId).then(setCast);
   }, [movieId]);
-  console.log(cast);
 
   return (
     <ul className={css.cast__list}>
