@@ -1,0 +1,9 @@
+.list__reviews{
+    list-style: none;
+   padding-right: 40px;
+}
+
+.author {
+    color: red;
+}
+

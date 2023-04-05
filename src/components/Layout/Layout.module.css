@@ -1,0 +1,20 @@
+.list {
+    list-style: none;
+    display: flex;
+    margin-left: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid grey;
+    box-shadow:(0px 4px 4px rgba(73, 71, 71, 0.25));
+}
+
+.list__item {
+    font-size: 45px;
+    
+  
+}
+    .active {
+    color: red;
+  }
+.list__item:not(:last-child) {
+    margin-right: 30px;
+}

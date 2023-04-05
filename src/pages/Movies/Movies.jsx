@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { getSearchMovie } from 'services/Api';
+import css from './Movies.module.css';
 
 export default function Movies() {
   const [searchFilm, setSearchFilm] = useState([]);
@@ -17,32 +18,34 @@ export default function Movies() {
 
   const updateQueryString = query => {
     query.preventDefault();
-    const name = query.target.value;
-    const nextParams = name !== '' && { name };
+    const name = query.target.value.trim();
+    const nextParams = name !== null && { name };
     setSearchParams(nextParams);
   };
   return (
     <div>
-      <form onSubmit={event => event.preventDefault()}>
+      <form className={css.form} onSubmit={event => event.preventDefault()}>
         <input
+          className={css.input}
           type="text"
           autoComplete="off"
           autoFocus
           placeholder="Search movies"
-          value={searchParams.get('name')}
           onChange={updateQueryString}
         />
-        <button type="submit">Search</button>
+        <button className={css.btn} type="submit">
+          Search
+        </button>
       </form>
       {searchFilm.length > 0 ? (
-        <ul>
+        <ul className={css.list}>
           {searchFilm?.map(({ id, poster_path, title }) => (
             <li key={id}>
-              <Link to={`${id}`} state={{ from: location }}>
-                <img
-                  src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
-                  alt={title}
-                ></img>
+              <Link
+                to={`${id}`}
+                state={{ from: location }}
+                className={css.list__item}
+              >
                 <p> {title}</p>
               </Link>
             </li>

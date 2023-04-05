@@ -1,17 +1,28 @@
 import { Suspense } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
+import css from './Layout.module.css';
 
 export default function Layout() {
   return (
     <div>
       <header>
         <nav>
-          <ul>
-            <li>
-              <NavLink to="/">Home</NavLink>
+          <ul className={css.list}>
+            <li className={css.list__item}>
+              <NavLink
+                to="/"
+                className={({ isActive }) => `${isActive ? css.active : ''}`}
+              >
+                Home
+              </NavLink>
             </li>
-            <li>
-              <NavLink to="/movies">Movies</NavLink>
+            <li className={css.list__item}>
+              <NavLink
+                to="/movies"
+                className={({ isActive }) => `${isActive ? css.active : ''}`}
+              >
+                Movies
+              </NavLink>
             </li>
           </ul>
         </nav>
